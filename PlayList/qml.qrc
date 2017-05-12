@@ -2,5 +2,11 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>MainForm.ui.qml</file>
+        <file>List.qml</file>
+        <file>SongEntry.qml</file>
+        <file>ListScrollView.qml</file>
+        <file>PlayBarsAnimation.qml</file>
+        <file>ScrollBar.qml</file>
+        <file>AudioControl.qml</file>
     </qresource>
 </RCC>

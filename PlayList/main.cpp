@@ -1,12 +1,17 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
+
+#include "applicationloader.h"
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
+    app.processEvents();
+    app.setQuitOnLastWindowClosed(true);
 
-    QQmlApplicationEngine engine;
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+    ApplicationLoader app_loader;
+
+    app_loader.load();
 
     return app.exec();
 }
