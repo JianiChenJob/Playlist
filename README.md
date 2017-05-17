@@ -7,7 +7,7 @@
 4.Build and Run the program in release mode.<br /><br/>
 
 ## Purposes for each qml files:<br/>
-main.qml -- main file to run<br/>
+main.qml -- main file<br/>
 AudioControl.qml -- can be used to control a audio like playing or stopping<br/>
 List.qml -- is a play list displaying the top 100 songs from itunes store<br/>
 ListScrollView.qml -- is the ScrollView<br/>
