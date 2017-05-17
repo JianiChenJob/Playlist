@@ -1,13 +1,10 @@
+/*! ScrollBar.qml is the scroll bar for the play list. So users can scroll the play list to view*/
 import QtQuick 2.5
 
 
 Item
 {
     id: root
-
-    //source: "content/scroll-bar.png"
-
-    //height: scrollLength
 
     property double scrollLength: 133 - 45
 
@@ -33,7 +30,7 @@ Item
                 Rectangle
                 {
                     anchors.fill: parent
-                    visible: false // parent.enabled
+                    visible: false
                     opacity: 0.7
                     color: 'red'
                 }

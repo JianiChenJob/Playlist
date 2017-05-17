@@ -1,3 +1,4 @@
+/*! list.qml is a play list displaying the top 100 songs from itunes store*/
 import QtQuick 2.0
 
 Item
@@ -8,7 +9,7 @@ Item
 
     property int rowSize: 0
 
-    signal songClicked(var preview, var imageSource, var songName, var artist, var duration);
+    signal songClicked(var preview, var imageSource, var songName, var artist, var duration, var price);
 
     FontLoader
     {
@@ -61,6 +62,8 @@ Item
             x: 730 + 370
             anchors.verticalCenter: title.verticalCenter
             font.family: roboto.name
+
+
         }
     }
 
@@ -68,7 +71,7 @@ Item
     {
         id: scroll
         width: 1196
-        height: 723
+        height: 630
         y: 63
         Item
         {
@@ -79,7 +82,7 @@ Item
 
                 SongEntry
                 {
-                    onSongClicked:root.songClicked(preview, imageSource, songName, artist, duration);
+                    onSongClicked:root.songClicked(preview, imageSource, songName, artist, duration, price);
                 }
 
                 onItemAdded:
@@ -87,7 +90,7 @@ Item
                     item.y = heightOffset();
                     item.songName = entryManager.getEntrySongName(index);
                     item.artist = entryManager.getEntryArtist(index);
-                    item.duration = entryManager.getEntryDuration(index);
+                    item.duration = root.timeConvertor(entryManager.getEntryDuration(index));
                     item.price = entryManager.getEntryPrice(index);
                     item.preview = entryManager.getEntryPreview(index);
                     item.imageSource = entryManager.getEntryImageSrc(index);
@@ -151,5 +154,22 @@ Item
         {
              songs[i].playing(false);
         }
+    }
+
+    function timeConvertor(duration)
+    {
+        var s = parseInt(duration / 1000);
+        var m = parseInt(s / 60);
+        s = s - (m * 60);
+        if(s < 10)
+        {
+            s = "0" + s;
+        }
+        if(m < 10)
+        {
+            m = "0" + m;
+        }
+
+        return m + ":" + s;
     }
 }

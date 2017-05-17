@@ -70,10 +70,18 @@ bool XMLParser::parseEntries(EntryManager *entry_manager, QString filepath)
         {
             song->price = price ->GetText();
         }
-        if(XMLElement *image_src = entry->FirstChildElement("im:image"))
+        std::vector<XMLElement*> image_srcs = XMLHelper::getChildrenNamed(entry, "im:image");
+        for(int i = 0; i != image_srcs.size(); ++i)
         {
-            song->image_source= image_src ->GetText();
+            XMLElement *image_src = image_srcs.at(i);
+            QString height = XMLHelper::attributeToQString(image_src, "height");
+
+            if(height == "170")
+            {
+                song->image_source= image_src ->GetText();
+            }
         }
+
         //qDebug() << "song "<< i << " song->image_source is "<< song->image_source;
         entry_manager->addSong(song);
 

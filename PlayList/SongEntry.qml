@@ -1,3 +1,5 @@
+/*! SongEntry.qml shows song name, artist and duration and
+allows user to select a song to play*/
 import QtQuick 2.0
 
 Item
@@ -23,7 +25,7 @@ Item
 
     property int songID: 0
 
-    signal songClicked(var preview, var imageSource, var songName, var artist, var duration);
+    signal songClicked(var preview, var imageSource, var songName, var artist, var duration, var price);
 
     FontLoader
     {
@@ -108,7 +110,7 @@ Item
         anchors.fill: parent
         onPressed:
         {
-            root.songClicked(preview, imageSource, songName, artist, duration);
+            root.songClicked(preview, imageSource, songName, artist, duration, price);
         }
     }
 

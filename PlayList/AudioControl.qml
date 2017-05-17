@@ -1,3 +1,5 @@
+/*! AudioControl.qml can be used to control a audio like playing or stopping*/
+
 import QtQuick 2.7
 import QtGraphicalEffects 1.0
 
@@ -14,8 +16,6 @@ Item
     property alias audioFilepath: player.source
 
     property string videoPreviewImageFilepath: ""
-
-    //property alias bkgFilePath: bkg.source
 
     property string audioTitle: ""
 
@@ -75,7 +75,8 @@ Item
         {
             id: buttonsBackground
 
-            x: 35; y: 921
+            x: 0; y: 970
+            width: 1920
 
             source: "content/controls/dock.png"
 
@@ -83,7 +84,7 @@ Item
             {
                 id: barBackground
 
-                x: 493
+                x: 443
                 y: 63
 
                 source: "content/controls/Progress bar BG.png"
@@ -97,7 +98,6 @@ Item
                     height: barBackground.height
                     Behavior on width
                     {
-                        //enabled: player.status !== MediaPlayer.EndOfMedia
                         NumberAnimation {
                             id: bar_width_behavior
                             duration: 1000
@@ -127,7 +127,6 @@ Item
                     anchors.verticalCenter: barBackground.verticalCenter
                     Behavior on x
                     {
-                        //enabled: player.status !== MediaPlayer.EndOfMedia
                         NumberAnimation {
                             id: grid_x_behavior
                             duration: 1000
@@ -145,9 +144,8 @@ Item
                 text: timeConvertor(player.duration)
                 color: "white"
                 font.pixelSize: 18
-                //font.weight: Font.bold
                 font.family: roboto.name
-                x: 1768;
+                x: 1718;
                 anchors.verticalCenter: barBackground.verticalCenter
 
             }
@@ -159,7 +157,7 @@ Item
                 color: "white"
                 font.pixelSize: 18
                 font.family: roboto.name
-                x: 420;
+                x: 370;
                 anchors.verticalCenter: barBackground.verticalCenter
             }
         }
@@ -172,7 +170,7 @@ Item
             font.capitalization: Font.AllUppercase
             font.pixelSize: 18
             font.family: roboto.name
-            x: 456; y: 948
+            x: 456; y: 997
             opacity: audioTitle == "" ? 0.0: 1.0
             Behavior on width
             {
@@ -229,8 +227,8 @@ Item
             source: "content/controls/BTN_Play.png"
             width:75; height: 75
 
-            x: 333
-            y: 939
+            x: 183
+            y: 988
 
             MultiPointTouchArea
             {
@@ -264,8 +262,8 @@ Item
 
             source: "content/controls/pause.png"
 
-            x: 333
-            y: 939
+            x: 183
+            y: 988
 
             MultiPointTouchArea
             {
@@ -344,6 +342,9 @@ Item
                         if(timeScrub.release)
                         {
                             player.volume = 1.0;
+                            stopButton.visible = true;
+
+                            playButton.visible = false;
                         }
                     }
                 }
@@ -356,25 +357,15 @@ Item
     //=========================================================================
     onAudioFilepathChanged:
     {
-        // chop the last 3 characters of the string and replace with png
         if(audioFilepath === "")
         {
             player.source = "";
             return;
         }
 
-        //audioFilepath = audioFilepath.replace("\\", "/");
-
         player.source = audioFilepath;
         bar_width_behavior.duration = 10;
         grid_x_behavior.duration = 10;
-    }
-
-
-
-    Component.onCompleted:
-    {
-        //initial();
     }
 
     onAutoPlayChanged:

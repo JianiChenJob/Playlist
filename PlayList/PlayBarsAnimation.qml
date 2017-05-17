@@ -1,3 +1,5 @@
+/*! PlayBarsAnimation.qml is when the selected song is playing
+there will be three bars animation showing instead of song's number*/
 import QtQuick 2.0
 
 Item
@@ -13,7 +15,6 @@ Item
     Rectangle
     {
         id: bar2
-        //rotation: 180
         width: 2
         color: "#ffffff"
         x: 4
@@ -21,7 +22,6 @@ Item
     Rectangle
     {
         id: bar3
-        //rotation: 180
         width: 2
         color: "#ffffff"
         x: 8
