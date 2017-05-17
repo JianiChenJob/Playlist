@@ -10,7 +10,6 @@ SOURCES += main.cpp \
     XML/qxmlhelper.cpp \
     XML/xmlhelper.cpp \
     XML/xmlloader.cpp \
-    ../../renderer/HappyCat/ThirdParty/tinyxml2/tinyxml2.cpp \
     XML/xmlwriter.cpp \
     Common/colorhelper.cpp \
     Common/filebrowser.cpp \
@@ -23,11 +22,12 @@ SOURCES += main.cpp \
     Common/stringhelper.cpp \
     Image/colordialog.cpp \
     Image/imagehelper.cpp \
-    asyncimageprovider.cpp
+    asyncimageprovider.cpp \
+    tinyxml2/tinyxml2.cpp
 
 RESOURCES += qml.qrc
 
-INCLUDEPATH += ../../renderer/HappyCat/ThirdParty/ \
+INCLUDEPATH += tinyxml2/ \
     Common/ \
     XML/ \
     Image/
@@ -65,7 +65,6 @@ HEADERS += \
     XML/qxmlhelper.h \
     XML/xmlhelper.h \
     XML/xmlloader.h \
-    ../../renderer/HappyCat/ThirdParty/tinyxml2/tinyxml2.h \
     XML/xmlwriter.h \
     Common/colorhelper.h \
     Common/filebrowser.h \
@@ -79,4 +78,5 @@ HEADERS += \
     Common/uniquelist.h \
     Image/colordialog.h \
     Image/imagehelper.h \
-    asyncimageprovider.h
+    asyncimageprovider.h \
+    tinyxml2/tinyxml2.h
