@@ -1,12 +1,12 @@
 # Playlist
 
-How to run this program?<br />
+##How to run this program?<br />
 1.First download the repository from GitHub.<br />
 2.Exact the folder.<br />
 3.Go to PlayList folder. Open PlayList.pro by Qt Creator.<br />
 4.Build and Run the program in release mode.<br /><br/>
 
-Purposes for each qml files:<br/>
+##Purposes for each qml files:<br/>
 main.qml -- main file to run<br/>
 AudioControl.qml -- can be used to control a audio like playing or stopping<br/>
 List.qml -- is a play list displaying the top 100 songs from itunes store<br/>
